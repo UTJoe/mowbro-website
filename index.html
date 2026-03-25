@@ -650,6 +650,93 @@
     }
 
     /* ─── MOBILE ───────────────────────────────────── */
+    /* ─── LEGAL MODALS ─────────────────────────────── */
+    .legal-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10,20,10,0.75);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      backdrop-filter: blur(4px);
+    }
+    .legal-modal-overlay.active { display: flex; }
+
+    .legal-modal {
+      background: var(--white);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 680px;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+      overflow: hidden;
+    }
+    .legal-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 28px;
+      border-bottom: 1.5px solid rgba(93,187,63,0.12);
+      flex-shrink: 0;
+    }
+    .legal-modal-header h2 {
+      font-family: 'Paytone One', sans-serif;
+      font-size: 1.3rem;
+      color: var(--green-dark);
+    }
+    .legal-modal-close {
+      background: rgba(93,187,63,0.1);
+      border: none;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      line-height: 1;
+      color: var(--green-dark);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+      flex-shrink: 0;
+    }
+    .legal-modal-close:hover { background: rgba(93,187,63,0.22); }
+
+    .legal-modal-body {
+      padding: 28px;
+      overflow-y: auto;
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: #3a5a35;
+    }
+    .legal-modal-body p { margin-bottom: 14px; }
+    .legal-modal-body h3 {
+      font-family: 'Paytone One', sans-serif;
+      font-size: 1rem;
+      color: var(--green-dark);
+      margin: 24px 0 8px;
+    }
+    .legal-modal-body h4 {
+      font-weight: 700;
+      color: var(--green-dark);
+      margin: 16px 0 6px;
+      font-size: 0.88rem;
+    }
+    .legal-modal-body ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+    .legal-modal-body ul li { margin-bottom: 6px; }
+    .legal-modal-body a { color: var(--blue-dark); }
+    .legal-effective {
+      font-size: 0.8rem;
+      color: #7a9a72;
+      margin-bottom: 20px !important;
+    }
+
     @media (max-width: 768px) {
       nav { padding: 0 20px; }
       .nav-links { display: none; }
@@ -673,7 +760,7 @@
       <li><a href="#features">Features</a></li>
       <li><a href="#how">How It Works</a></li>
       <li><a href="#pricing">Pricing</a></li>
-      <li><a href="/cdn-cgi/l/email-protection#4e3d3b3e3e213c3a0e2321392c3c21602f3e3e">Support</a></li>
+
       <li><a href="#" class="nav-cta">Download App</a></li>
     </ul>
   </nav>
@@ -881,7 +968,181 @@
       <div class="footer-tagline">Mow grass, mow problems. &nbsp;&middot;&nbsp; &copy; 2026 Scentcation LLC</div>
     </div>
     <ul class="footer-links">
-      <li><a href="#">Privacy Policy</a></li>
-      <li><a href="#">Terms &amp; Conditions</a></li>
+      <li><a href="#" onclick="event.preventDefault();openLegalModal('modal-privacy')">Privacy Policy</a></li>
+      <li><a href="#" onclick="event.preventDefault();openLegalModal('modal-terms')">Terms &amp; Conditions</a></li>
     </ul>
-    <div class="footer-copy">iO
+        <div class="footer-copy">iOS only &nbsp;&middot;&nbsp; Built for the Bros</div>
+  </footer>
+
+  <!-- PRIVACY POLICY MODAL -->
+  <div id="modal-privacy" class="legal-modal-overlay" onclick="if(event.target===this)closeLegalModal('modal-privacy')">
+    <div class="legal-modal">
+      <div class="legal-modal-header">
+        <h2>Privacy Policy</h2>
+        <button class="legal-modal-close" onclick="closeLegalModal('modal-privacy')">&times;</button>
+      </div>
+      <div class="legal-modal-body">
+        <p class="legal-effective">Effective Date: March 17, 2026</p>
+        <p>This Privacy Policy describes how Scentcation LLC ("we," "us," or "our"), operating as Mow Bro, collects, uses, and protects your information when you use the Mow Bro mobile application ("App"). By using the App you agree to the practices described in this Privacy Policy.</p>
+
+        <h3>1. Information We Collect</h3>
+        <h4>1.1 Information You Provide</h4>
+        <ul>
+          <li>Name and business name</li>
+          <li>Phone number</li>
+          <li>Profile photo (optional)</li>
+          <li>ZIP code and service area coordinates</li>
+          <li>Work schedule preferences</li>
+          <li>Services offered</li>
+          <li>Customer (Homie) information including names, phone numbers, and addresses that you enter into the App</li>
+        </ul>
+        <h4>1.2 Information Collected Automatically</h4>
+        <ul>
+          <li>Device type and operating system</li>
+          <li>App usage data and feature interactions</li>
+          <li>Crash reports and performance data</li>
+        </ul>
+        <h4>1.3 Authentication Information</h4>
+        <p>We use Apple Sign In and Google Sign In for authentication. We receive a unique identifier and basic profile information (name and email) from these services. We do not receive or store your Apple or Google passwords.</p>
+
+        <h3>2. How We Use Your Information</h3>
+        <p>We use the information we collect to:</p>
+        <ul>
+          <li>Provide, maintain, and improve the App and its features</li>
+          <li>Display your schedule, route, and earnings information</li>
+          <li>Provide weather information based on your ZIP code</li>
+          <li>Display map and service area features</li>
+          <li>Send account-related communications</li>
+          <li>Respond to support requests</li>
+          <li>Ensure the security and integrity of the App</li>
+          <li>Comply with legal obligations</li>
+        </ul>
+
+        <h3>3. Customer Data</h3>
+        <p>As a Mow Bro you may store your customers' personal information ("Customer Data") within the App. Regarding Customer Data:</p>
+        <ul>
+          <li>Customer Data is stored securely in our database and is accessible only to you</li>
+          <li>We do not use Customer Data for any purpose other than providing App functionality to you</li>
+          <li>We do not sell, share, or transfer Customer Data to third parties</li>
+          <li>You are responsible for ensuring you have appropriate consent from your customers to store their information</li>
+          <li>Upon account deletion, Customer Data associated with your account will be removed from our systems</li>
+        </ul>
+
+        <h3>4. Location Data</h3>
+        <p>We use your ZIP code and service area coordinates solely to provide weather information and map functionality within the App. We do not track your real-time location. Location information is not sold or shared with third parties and is not used for advertising purposes.</p>
+
+        <h3>5. Data Storage and Security</h3>
+        <p>Your data is stored using Supabase, a secure cloud database service. We implement industry-standard security measures to protect your information including encrypted data transmission (TLS/SSL), row-level security ensuring each user can only access their own data, and secure authentication through Apple and Google OAuth. While we take reasonable measures to protect your information, no method of transmission over the internet is 100% secure. We cannot guarantee absolute security.</p>
+
+        <h3>6. Third-Party Services</h3>
+        <p><strong>Apple Sign In</strong> — Used for authentication. Subject to Apple's Privacy Policy at apple.com/privacy.</p>
+        <p><strong>Google Sign In</strong> — Used for authentication. Subject to Google's Privacy Policy at policies.google.com/privacy.</p>
+        <p><strong>OpenWeatherMap</strong> — Used to provide weather data based on your ZIP code. We send only your ZIP code to retrieve weather information.</p>
+        <p><strong>Venmo (Pro Feature)</strong> — Used to facilitate payment requests between Mow Bros and their customers. Any data shared with Venmo is subject to Venmo's Privacy Policy. We do not store your Venmo credentials.</p>
+
+        <h3>7. Data Retention</h3>
+        <p>We retain your data for as long as your account is active. If you delete your account, your personal information, Homie records, and schedule data will be removed from our systems. Aggregate and anonymized earnings data may be retained for internal analytics purposes.</p>
+
+        <h3>8. Your Rights</h3>
+        <p>You have the right to access the personal information we hold about you, correct inaccurate information through the Settings screen in the App, delete your account and associated data through the Settings screen, and opt out of any non-essential communications. To exercise any of these rights or to make a data-related request, please contact us at the address below.</p>
+
+        <h3>9. Children's Privacy</h3>
+        <p>Mow Bro is not directed at children under the age of 18. We do not knowingly collect personal information from anyone under 18. If we become aware that a child under 18 has provided us with personal information, we will take steps to delete such information promptly.</p>
+
+        <h3>10. California Privacy Rights (CCPA)</h3>
+        <p>If you are a California resident, you have the right to know what personal information we collect, the right to request deletion of your personal information, and the right to opt out of the sale of your personal information. We do not sell personal information. To exercise your California privacy rights, please contact us at the address below.</p>
+
+        <h3>11. Changes to This Privacy Policy</h3>
+        <p>We may update this Privacy Policy from time to time. When we make changes we will update the effective date at the top of this document. Your continued use of the App after any changes constitutes your acceptance of the updated Privacy Policy.</p>
+
+        <h3>12. Contact Us</h3>
+        <p>Scentcation LLC &mdash; Operating as: Mow Bro<br>Email: <a href="mailto:support@mowbro.app">support@mowbro.app</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TERMS & CONDITIONS MODAL -->
+  <div id="modal-terms" class="legal-modal-overlay" onclick="if(event.target===this)closeLegalModal('modal-terms')">
+    <div class="legal-modal">
+      <div class="legal-modal-header">
+        <h2>Terms &amp; Conditions</h2>
+        <button class="legal-modal-close" onclick="closeLegalModal('modal-terms')">&times;</button>
+      </div>
+      <div class="legal-modal-body">
+        <p class="legal-effective">Effective Date: March 17, 2026</p>
+        <p>These Terms and Conditions ("Terms") govern your use of the Mow Bro mobile application ("App") operated by Scentcation LLC ("we," "us," or "our"). By downloading, accessing, or using Mow Bro, you agree to be bound by these Terms. If you do not agree, do not use the App.</p>
+
+        <h3>1. Eligibility</h3>
+        <p>You must be at least 18 years of age to create an account and use Mow Bro. By using the App you represent and warrant that you are 18 or older and that you have the legal capacity to enter into a binding agreement. The App is currently available to users in the United States only.</p>
+
+        <h3>2. Account Registration</h3>
+        <p>To use Mow Bro you must register an account using Apple Sign In or Google Sign In. You are responsible for maintaining the confidentiality of your account credentials and for all activity that occurs under your account. You agree to notify us immediately of any unauthorized use of your account. We reserve the right to suspend or terminate your account at any time for any violation of these Terms.</p>
+
+        <h3>3. Description of the App</h3>
+        <p>Mow Bro is a productivity tool designed to help lawn care operators ("Mow Bros") manage their customer schedules, routes, and business operations. The App allows Mow Bros to store and manage customer contact information, schedule recurring and one-time lawn care visits, track daily routes and mark completed jobs, view earnings summaries and cut history, and access Pro tier features including route optimization, turn-by-turn navigation, smart rescheduling, and Venmo payment request integration (Pro subscription required).</p>
+
+        <h3>4. Customer Data Responsibility</h3>
+        <p>As a Mow Bro, you may store personal information about your customers including their names, phone numbers, and home addresses ("Customer Data"). You acknowledge and agree that you are solely responsible for obtaining any necessary consent from your customers to store and use their personal information within the App, that Customer Data may only be used for the purpose of scheduling and managing lawn care services, and that Scentcation LLC is not responsible for any misuse of Customer Data by Mow Bros.</p>
+
+        <h3>5. Pro Subscription</h3>
+        <p><strong>5.1 Pro Tier Features</strong> — Certain features of Mow Bro require a Pro subscription ("Mow Pro") at a cost of $20.00 per month. Pro features include route optimization, turn-by-turn navigation, smart rescheduling, and Venmo payment request integration.</p>
+        <p><strong>5.2 Billing</strong> — Pro subscriptions are billed monthly through the Apple App Store. Your subscription will automatically renew at the end of each billing period unless cancelled. All billing is handled by Apple and subject to Apple's payment terms.</p>
+        <p><strong>5.3 Cancellation</strong> — You may cancel your Pro subscription at any time through your Apple App Store account settings. Cancellation takes effect at the end of the current billing period. We do not offer refunds for partial months.</p>
+
+        <h3>6. Venmo Payment Integration</h3>
+        <p>The Mow Pro tier includes the ability to send Venmo payment requests to customers. Mow Bro does not process payments and is not a payment processor. All payments are transactions between you and your customers through Venmo's platform. We are not responsible for any payment disputes, failed transactions, or issues arising from the use of Venmo. Use of Venmo is subject to Venmo's own terms of service and privacy policy.</p>
+
+        <h3>7. Location Data</h3>
+        <p>Mow Bro uses your ZIP code and service area coordinates to provide weather information and map functionality. We do not sell or share your location data with third parties. Location information is used solely to provide in-app features.</p>
+
+        <h3>8. Prohibited Conduct</h3>
+        <p>You agree not to use Mow Bro to harass, threaten, or intimidate customers or other users; store Customer Data for any purpose other than scheduling lawn care services; scrape, copy, or redistribute any data or content from the App; reverse engineer or decompile the App; use the App for any unlawful purpose; or upload or transmit any viruses, malware, or other harmful code.</p>
+
+        <h3>9. Intellectual Property</h3>
+        <p>The Mow Bro name, logo, app design, and all content within the App are the property of Scentcation LLC and are protected by applicable intellectual property laws. You may not use, reproduce, or distribute any of our intellectual property without our prior written consent.</p>
+
+        <h3>10. Disclaimer of Warranties</h3>
+        <p>THE APP IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. SCENTCATION LLC DISCLAIMS ALL WARRANTIES INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.</p>
+
+        <h3>11. Limitation of Liability</h3>
+        <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, SCENTCATION LLC SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING FROM YOUR USE OF THE APP. IN NO EVENT SHALL OUR TOTAL LIABILITY EXCEED THE AMOUNT YOU PAID US IN THE TWELVE MONTHS PRIOR TO THE CLAIM.</p>
+
+        <h3>12. Indemnification</h3>
+        <p>You agree to indemnify, defend, and hold harmless Scentcation LLC and its officers, directors, employees, and agents from any claims, damages, losses, liabilities, and expenses (including attorneys' fees) arising from your use of the App, your violation of these Terms, or your violation of any third party's rights.</p>
+
+        <h3>13. Account Deletion</h3>
+        <p>You may delete your account at any time through the Settings screen in the App. Account deletion will remove your profile information, Homie records, and schedule data. Earnings history may be retained for internal recordkeeping purposes.</p>
+
+        <h3>14. Changes to Terms</h3>
+        <p>We reserve the right to update these Terms at any time. When we make changes we will update the effective date at the top of this document. Your continued use of the App after any changes constitutes your acceptance of the updated Terms.</p>
+
+        <h3>15. Governing Law</h3>
+        <p>These Terms shall be governed by and construed in accordance with the laws of the United States and the state in which Scentcation LLC is registered. Any disputes arising under these Terms shall be resolved through binding arbitration in accordance with the rules of the American Arbitration Association.</p>
+
+        <h3>16. Contact Us</h3>
+        <p>Scentcation LLC &mdash; Operating as: Mow Bro<br>Email: <a href="mailto:support@mowbro.app">support@mowbro.app</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openLegalModal(id) {
+      document.getElementById(id).classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLegalModal(id) {
+      document.getElementById(id).classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.legal-modal-overlay.active').forEach(function(m) {
+          m.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
