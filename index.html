@@ -260,6 +260,8 @@
       margin-bottom: 16px;
     }
     .section-title em { font-style: normal; color: var(--green); }
+    .title-break { display: inline; }
+    @media (min-width: 769px) { .title-break { display: block; } }
     .section-sub {
       font-size: 1.05rem;
       color: #4a6a42;
@@ -796,7 +798,7 @@
   <section class="features" id="features">
     <div class="container">
       <p class="section-label">Built for the field</p>
-      <h2 class="section-title">Everything you need to<br><em>run your business.</em></h2>
+      <h2 class="section-title">Everything you need to <span class="title-break"><em>run your business.</em></span></h2>
       <p class="section-sub">Built for operators who work outside with gloves on. Big buttons, no fluff, zero confusion.</p>
       <div class="features-grid">
         <div class="feature-card">
